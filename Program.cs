@@ -5,8 +5,8 @@ using System.Drawing.Imaging;
 
 namespace C_sharp_learning_console
 {
-   
-    
+
+    // i want create a image which i guess is in RGB encoded but i need to be in sRGB linear for modifing some set up so i use a conveter. After this i try to get the luminance factor.
 
 
     class Program

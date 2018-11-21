@@ -66,19 +66,31 @@ namespace C_sharp_learning_console
             }
 
         }
-
+        //byte[] _imageBuffer = new byte[102400]
         // Convert a color from encoded to linear sRGB
-        List<double> SRGBToLinear3(List<double> c)
+        double[] SRGBToLinear3(double[] pixel)
         {
-            return new List<double>() { SRGBToLinear(c[0]), SRGBToLinear(c[1]), SRGBToLinear(c[2])};
+            return new double[] { SRGBToLinear(pixel[0]), SRGBToLinear(pixel[1]), SRGBToLinear(pixel[2])};
+
         }
+
+        // Convert a color from linear to encoded sRGB (not use)
+        static List<double> TTTSRGBFromLinear3(List<double> pixel)
+        {
+            return new List<double>() { SRGBFromLinear(pixel[0]), SRGBFromLinear(pixel[1]), SRGBFromLinear(pixel[2]) };
+
+        }
+        // ok but its a arrayList i need but i keep the example
+
+
 
         // Convert a color from linear to encoded sRGB
-        static  List<double>   SRGBFromLinear3(List<double> c)
+        static double[] SRGBFromLinear3(double[] pixel)
         {
-            return new List<double>() { SRGBFromLinear(c[0]), SRGBFromLinear(c[1]), SRGBFromLinear(c[2]) };
+            return new double[] { SRGBFromLinear(pixel[0]), SRGBFromLinear(pixel[1]), SRGBFromLinear(pixel[2]) };
 
         }
+        // hope its work now 
 
 
 
@@ -88,7 +100,7 @@ namespace C_sharp_learning_console
         /// <summary>
         /// //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         /// </summary>
-        
+
 
 
 

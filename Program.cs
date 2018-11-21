@@ -66,22 +66,13 @@ namespace C_sharp_learning_console
             }
 
         }
-        //byte[] _imageBuffer = new byte[102400]
+
         // Convert a color from encoded to linear sRGB
-        double[] SRGBToLinear3(double[] pixel)
+        static double[] SRGBToLinear3(double[] pixel)
         {
-            return new double[] { SRGBToLinear(pixel[0]), SRGBToLinear(pixel[1]), SRGBToLinear(pixel[2])};
+            return new double[] { SRGBToLinear(pixel[0]), SRGBToLinear(pixel[1]), SRGBToLinear(pixel[2]) };
 
         }
-
-        // Convert a color from linear to encoded sRGB (not use)
-        static List<double> TTTSRGBFromLinear3(List<double> pixel)
-        {
-            return new List<double>() { SRGBFromLinear(pixel[0]), SRGBFromLinear(pixel[1]), SRGBFromLinear(pixel[2]) };
-
-        }
-        // ok but its a arrayList i need but i keep the example
-
 
 
         // Convert a color from linear to encoded sRGB
@@ -97,9 +88,8 @@ namespace C_sharp_learning_console
 
 
 
-        /// <summary>
-        /// //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// </summary>
+        //Color Operations
+        //Operations that can be done on colors.Note that for best results, these operations need to be carried out with linear RGB colors rather than encoded RGB colors, unless noted otherwise.
 
 
 
@@ -117,6 +107,16 @@ namespace C_sharp_learning_console
                     PlotPixel(x, y, val, val2, val3);
                 }
             }
+
+
+            SRGBToLinear(c); //what i put in ?
+            SRGBToLinear3(pixel); // i think i put _imageBuffer in.
+
+
+
+
+
+
 
             unsafe
             {

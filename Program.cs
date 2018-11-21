@@ -6,7 +6,12 @@ using System.Drawing.Imaging;
 namespace C_sharp_learning_console
 {
 
-    // i want create a image which i guess is in RGB encoded but i need to be in sRGB linear for modifing some set up so i use a conveter. After this i try to get the luminance factor.
+    // i want create a image which i guess is in RGB encoded but i need to be in sRGB linear for 
+    //modifing some set up so i use a conveter. After this i try to get the luminance factor.
+
+    //Color Operations
+    //Operations that can be done on colors.Note that for best results, these operations need to be carried out with 
+    //linear RGB colors rather than encoded RGB colors, unless noted otherwise.
 
 
     class Program
@@ -115,21 +120,6 @@ namespace C_sharp_learning_console
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-        //Color Operations
-        //Operations that can be done on colors.Note that for best results, these operations need to be carried out with linear RGB colors rather than encoded RGB colors, unless noted otherwise.
 
 
 

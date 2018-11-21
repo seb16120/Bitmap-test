@@ -88,6 +88,46 @@ namespace C_sharp_learning_console
 
 
 
+
+
+
+
+
+        // Convert encoded sRGB to luminance factor
+        static double LuminanceSRGB(double[] color) //not sure if color is a array
+        {
+            // Convert to linear sRGB
+            double[] c = SRGBToLinear(color);
+            // Find the linear sRGB luminance factor
+            return c[0] * 0.2126 + c[1] * 0.7152 + c[2] * 0.0722;
+        }
+
+        // Convert encoded sRGB (with D50/2 white point)
+        // to luminance factor
+        static double LuminanceSRGBD50(double color)
+        {
+            // Convert to linear sRGB
+            double[] c = SRGBToLinear(color);
+            // Find the linear sRGB luminance factor
+            return c[0] * 0.2225 + c[1] * 0.7169 + c[2] * 0.0606;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         //Color Operations
         //Operations that can be done on colors.Note that for best results, these operations need to be carried out with linear RGB colors rather than encoded RGB colors, unless noted otherwise.
 
@@ -111,6 +151,7 @@ namespace C_sharp_learning_console
 
             SRGBToLinear(c); //what i put in ?
             SRGBToLinear3(pixel); // i think i put _imageBuffer in.
+            LuminanceSRGB(color); //i put in the RGB who was transform into sRGB linear
 
 
 

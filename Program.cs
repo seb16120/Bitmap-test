@@ -8,6 +8,7 @@ namespace C_sharp_learning_console
 
     // i want create a image which i guess is in RGB encoded but i need to be in sRGB linear for 
     //modifing some set up so i use a conveter. After this i try to get the luminance factor.
+    // After i try to generate random image by 3 method : encoded rgb / linear s-RGB / #XXXXXX
 
     //Color Operations
     //Operations that can be done on colors.Note that for best results, these operations need to be carried out with 
@@ -30,6 +31,68 @@ namespace C_sharp_learning_console
             // Fixed alpha value (No transparency)
             _imageBuffer[offset + 3] = 255;
         }
+
+
+
+
+
+
+        // Converts 0-1 format to N/N/N format as an integer.
+        static double ToNNN(byte[] rgb, double scale) // i suppose scale is a double
+        {
+            double sm1 = scale - 1;
+            return Math.Round(rgb[2] * sm1) * scale * scale + Math.Round(rgb[1] * sm1) * scale + Math.Round(rgb[0] * sm1);
+        }
+
+
+        // Converts N/N/N integer format to 0-1 format
+        static double[] FromNNN(double rgb, double scale)
+        {
+            double sm1 = scale - 1;
+            double r = Math.Rem(rgb, scale); //what is rem ? i test Math.Rem but not work   <---- help
+            double g = rem(Math.Floor(rgb / scale), scale);
+            double b = rem(Math.Floor(rgb / (scale * scale)), scale);
+            return new double[] { r / sm1, g / sm1, b / sm1 };
+        }
+
+
+        static double[] From888(double rgb)
+        {
+            return  FromNNN(rgb, 256);
+        }
+
+        static double To888(byte[] rgb)
+        {
+            return ToNNN(rgb, 256);
+        }
+
+        // To generate a random string of characters: (for create a random #XXXXXX Color)
+        //
+        // Generate a list of the letters, digits, and/or other characters the string can have. Examples are given later in this section.
+        //
+        // Build a new string whose characters are chosen from that character list. The pseudocode below demonstrates this by creating a list, 
+        // rather than a string, where the random characters will be held.
+        // It also takes the number of characters as a parameter named size. 
+        // (How to convert this list to a text string depends on the programming language and is outside the scope of this page.)
+        //
+        static List<Char> RandomString(List<char> characterList, int stringSize)
+        {
+
+
+            int i = 0;
+            List<Char> newString = new List<Char>();
+            while (i < stringSize)
+            {
+                // Choose a character from the list
+                char randomChar = characterList[RNDINTEXC (characterList.Count)]; //need the name of the method of .method for RNDINTEXC    <---- help
+                // Add the character to the string
+                newString.Add(randomChar); //
+                i = i + 1;
+            }
+
+           return newString;
+        }
+
 
 
 
@@ -99,7 +162,7 @@ namespace C_sharp_learning_console
 
 
         // Convert encoded sRGB to luminance factor
-        static double LuminanceSRGB(double[] color) //not sure if color is a array
+        static double LuminanceSRGB(double[] color) //not sure if color is a array  <---- help
         {
             // Convert to linear sRGB
             double[] c = SRGBToLinear(color);
@@ -144,9 +207,18 @@ namespace C_sharp_learning_console
             LuminanceSRGB(color); //i put in the RGB who was transform into sRGB linear
 
 
+            Random random1 = new Random();
+            int randomNumber1 = random1.Next(0, 16777216);
 
 
+            // Generating a random 8-bpc encoded RGB color is equivalent to calling this
+            From888(randomNumber1); 
 
+            Random random2 = new Random();
+            int randomNumber2 = random2.Next(1); // i Hope its this for generate Random number beetween 0 and 1
+
+            //Generating a random color in the 0-1 format is equivalent to generating this.
+            double[] randomColor = [randomNumber2, randomNumber2, randomNumber2]; 
 
 
             unsafe
